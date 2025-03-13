@@ -36,8 +36,7 @@ public class StudentBO {
             addStudent();
             String choice = Validate.getString("Do you want to add another student? (Y/N): ",
                     IConstant.REGEX_YN,
-                    "Invalid choice! Please enter only 'Y' or 'N'.",
-                    "Choice cannot be empty.").toUpperCase();
+                    "Invalid choice! Please enter only 'Y' or 'N'.").toUpperCase();
             if (!choice.equals("Y")) {
                 break;
             }

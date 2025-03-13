@@ -14,10 +14,9 @@ public class Validate {
      * @param prompt       The prompt message to display.
      * @param regex        The regular expression the input must match.
      * @param errorInvalid The error message for invalid input.
-     * @param errorEmpty   The error message for empty input.
      * @return A valid string that matches the regex.
      */
-    public static String getString(String prompt, String regex, String errorInvalid, String errorEmpty) {
+    public static String getString(String prompt, String regex, String errorInvalid) {
         while (true) {
             System.out.print(prompt);
             String input = sc.nextLine().trim();
