@@ -21,9 +21,7 @@ public class Validate {
         while (true) {
             System.out.print(prompt);
             String input = sc.nextLine().trim();
-            if (input.isEmpty()) {
-                System.out.println(errorEmpty);
-            } else if (!input.matches(regex)) {
+            if (!input.matches(regex)) {
                 System.out.println(errorInvalid);
             } else {
                 return input;

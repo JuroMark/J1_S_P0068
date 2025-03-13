@@ -1,12 +1,17 @@
 package bo;
 
 import entity.Student;
-
+import constant.IConstant;
+import utils.Validate;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
+/**
+ * The StudentBO class provides business operations for managing Student
+ * objects.
+ */
 public class StudentBO {
     private List<Student> students;
 
@@ -14,28 +19,32 @@ public class StudentBO {
         this.students = new ArrayList<>();
     }
 
-    public StudentBO(List<Student> students) {
-        this.students = students;
-    }
-
     public List<Student> getStudents() {
         return students;
     }
 
-    public void setStudents(List<Student> students) {
-        this.students = students;
+    public void addStudent() {
+        Student s = new Student();
+        s.input();
+        students.add(s);
     }
 
-    public void addStudent(Student student) {
-        students.add(student);
+    public void inputStudents() {
+        System.out.println("====== Student Management Program ======");
+        while (true) {
+            System.out.println("Please enter student information:");
+            addStudent();
+            String choice = Validate.getString("Do you want to add another student? (Y/N): ",
+                    IConstant.REGEX_YN,
+                    "Invalid choice! Please enter only 'Y' or 'N'.",
+                    "Choice cannot be empty.").toUpperCase();
+            if (!choice.equals("Y")) {
+                break;
+            }
+        }
     }
 
-    /**
-     * Sorts the list of students by name (A-Z)
-     *
-     * @param students The list of students to sort.
-     */
-    public void sortStudent() {
+    public void sortStudents() {
         Collections.sort(students, new Comparator<Student>() {
             @Override
             public int compare(Student s1, Student s2) {
@@ -44,11 +53,6 @@ public class StudentBO {
         });
     }
 
-    /**
-     * Displays the list of students.
-     *
-     * @param students The list of students to display.
-     */
     public void display() {
         if (students.isEmpty()) {
             System.out.println("No students to display.");
